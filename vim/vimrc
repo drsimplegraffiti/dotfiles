@@ -1,3 +1,4 @@
+" BASIC SETUP
 set tabstop=4       " Set tab width to 4 spaces
 set softtabstop=4     " Fine tunes the amount of white space to be added
 set shiftwidth=4      " determines the  amount of white space to add in normal mode
