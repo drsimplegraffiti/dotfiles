@@ -1,0 +1,152 @@
+set tabstop=4       " Set tab width to 4 spaces
+set softtabstop=4     " Fine tunes the amount of white space to be added
+set shiftwidth=4      " determines the  amount of white space to add in normal mode
+set shiftwidth=4    " Use 4 spaces for indentation
+set textwidth=79     " text wrap  width
+set expandtab       " Convert tabs to spaces
+set autoindent      " Auto-indent new lines
+set smartindent     " Smart auto-indentation"
+set showmatch       " Show matching parts of pairs 
+
+set number          " Show line numbers
+set relativenumber  " Show relative line numbers
+set cursorline      " Highlight current line
+:highlight Cursorline cterm=bold ctermbg=black
+
+set hlsearch       " Highlight all search results
+set incsearch      " Incremental search as you type
+set ignorecase     " Ignore case when searching
+set smartcase      " Case-sensitive if uppercase letters are used
+
+set clipboard=unnamedplus " Use system clipboard"
+
+
+set lazyredraw     " Faster scrolling
+set ttyfast        " Improve performance
+set updatetime=300 " Reduce delay for CursorHold events
+
+
+set nocompatible      " Disable compatibility with old vi (enables better Vim features)
+syntax on             " Enable syntax highlighting
+colorscheme pablo
+set background=dark   " or set background=light"
+set path+=**          " Allow recursive search for files with the :find command
+set wildmenu          " Enable a more interactive command-line completion menu. To use, :find <any word> and then tab
+
+"let g:netrw_banner=0        " Disable the annoying banner at the top of the netrw window  
+let g:netrw_browse_split=4  " Open files in the prior window instead of creating a new split  
+let g:netrw_altv=1          " Open vertical splits to the right instead of the left  
+let g:netrw_liststyle=3     " Use tree-style listing instead of a plain list  
+let g:netrw_list_hide=netrw_gitignore#Hide()  " Hide files listed in .gitignore  
+let g:netrw_list_hide .= ', \(^\/\s\s\) \zs\.\S\+'  " Hide dotfiles (.) except for ".." (parent directory)  
+set modifiable
+set noreadonly
+
+
+call plug#begin('~/.vim/plugged')
+
+" Install fzf and fzf.vim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
+Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
+
+" COC SETTINGS for FUZZY FIND, Go to Definition, Implementation and Import
+" Use :Files to fuzzy search files in the current directory
+nnoremap <C-p> :Files<CR>
+
+" Search inside files using Ripgrep (requires `rg`)
+nnoremap <Leader>f :Rg<CR>
+
+" " Search for buffers
+nnoremap <Leader>b :Buffers<CR>
+
+" Search in command history
+nnoremap <Leader>h :History<CR> 
+
+nnoremap K :call CocActionAsync('doHover')<CR>
+
+" Toggle NERDTree with Ctrl + n
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Open NERDTree automatically if no file is opened
+"autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
+
+inoremap <silent><expr> <TAB>
+            \ coc#pum#visible() ? coc#pum#next(1) :
+            \ CheckBackspace() ? "\<Tab>" :
+            \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" " <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~#
+        '\s'
+endfunction
+"
+
+
+" Use <c-space> to trigger completion
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
+"
+"     " Use `[g` and `]g` to navigate diagnostics
+"     " Use `:CocDiagnostics` to get all diagnostics of current buffer in
+"     location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"
+"     " GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+
+"ALE SETTINGS FOR PICKING ERRORS
+let g:ale_linters = {
+            \   'javascript': ['eslint'],
+            \   'typescript': ['eslint', 'tsserver'],
+            \   'python': ['pylint'],
+            \   'java': ['javac'],
+            \   'go': ['golangci-lint'],
+            \   'c': ['gcc'],
+            \   'cpp': ['clang'],
+            \}
+
+let g:ale_fixers = {
+            \   'javascript': ['prettier'],
+            \   'typescript': ['prettier'],
+            \   'python': ['black']
+            \}
+
+let g:ale_fix_on_save = 1
+
+" REMAPPING ESC KEYS
+inoremap jk <Esc>
+inoremap jj <Esc>
+inoremap kj <Esc>
+
+cnoremap jk <C-c>
+cnoremap jj  <C-c>
+
+
+" MOVING LINE UP AND DOWN
+vnoremap <C-k> :m '<-2<CR>gv=gv
+vnoremap <C-j> :m '>+1<CR>gv=gv
