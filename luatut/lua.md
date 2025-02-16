@@ -204,3 +204,11 @@ end)
 coroutine.resume(co)  -- Runs first iteration
 coroutine.resume(co)  -- Runs second iteration
 ``` 
+
+
+### io.write
+```bash
+
+shout = "yay"
+io.write("size of yay is: ", #shout, "\n")
+```

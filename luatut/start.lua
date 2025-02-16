@@ -32,7 +32,5 @@ print(greet("james"))
 fruits = {"pickle", "mango"}
 print(fruits[1])
 
-
-file = io.open("./lua.copy.md", "w")
-file.write("Hello")
-file:close()
+shout = "yay"
+io.write("size of yay is: ", #shout, "\n")
