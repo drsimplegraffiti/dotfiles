@@ -29,3 +29,12 @@ cat ~/.ssh/id_rsa.pub | clip.exe
 ```bash
 ssh -T git@github.com
 ```
+
+### incase of any error
+```bash
+
+sudo chmod -R 755 .
+sudo chown -R $(whoami) .
+wsl --shutdown
+wsl
+```
