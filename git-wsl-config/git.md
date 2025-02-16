@@ -7,14 +7,14 @@ sudo apt update && sudo apt install git -y
 
 ### Configure git
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
+git config --global user.name "drsimplegraffiti"
+git config --global user.email "abayomiogunnusi@gmail.com"
 ```
 
 
 ### add the ssh
 ```bash
-ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+ssh-keygen -t rsa -b 4096 -C "abayomiogunnusi@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
