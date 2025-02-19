@@ -37,5 +37,5 @@ vim.cmd("syntax on")       -- Enable syntax highlighting
 vim.opt.background = "dark" -- Set background to dark
 
 -- Path and Completion
-vim.opt.path:append("**") -- Recursive file search with :find
+-- vim.opt.path:append("**") -- Recursive file search with :find
 vim.opt.wildmenu = true   -- Enable a more interactive completion menu
