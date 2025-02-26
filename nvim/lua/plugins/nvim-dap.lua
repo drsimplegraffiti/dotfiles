@@ -47,6 +47,16 @@ return {
     vim.keymap.set("n", "<Leader>dl", function() dap.run_last() end, { desc = "Run Last Debugging Session" })
     vim.keymap.set("n", "<Leader>dx", function() dap.terminate() end, { desc = "Terminate Debugging" })
 
+    vim.keymap.set("n", "<leader>ds", function()
+      require('dap').terminate()
+      require('dapui').close()
+      require('dap').repl.close()
+      vim.defer_fn(function()
+        require('dapui').open()
+      end, 100)  -- Ensure a slight delay before reopening UI
+    end, { desc = "Reset the debugger" })
+
+
     -- Go debugger setup
     require("dap-go").setup()
   end,
