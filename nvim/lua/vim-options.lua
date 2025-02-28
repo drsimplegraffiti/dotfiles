@@ -38,7 +38,25 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.opt.tabstop = 4       -- Set tab width to 4 spaces (Go standard)
+    vim.opt.shiftwidth = 4    -- Indentation width
+    vim.opt.expandtab = false -- Use real tabs instead of spaces
+  end
+})
+
+vim.opt.listchars = {
+  tab = "  ",  -- Two spaces instead of `» `
+  trail = "·",
+  nbsp = "␣"
+}
+
+
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
