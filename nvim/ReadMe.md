@@ -45,3 +45,13 @@ Then
 ```bash
 go version
 ```
+
+
+### Install lsp server
+```bash
+go install golang.org/x/tools/gopls@latest
+```
+
+```bash
+:MasonInstall gopls
+```

@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ""
 
+
 vim.opt.relativenumber = true -- or use vim.cmd("set relativenumber")
 vim.opt.number = true         -- or use vim.cmd("set number")
 vim.cmd("set expandtab")
