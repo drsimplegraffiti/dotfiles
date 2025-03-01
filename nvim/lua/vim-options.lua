@@ -100,3 +100,9 @@ vim.opt.background = "dark" -- Set background to dark
 -- Path and Completion
 -- vim.opt.path:append("**") -- Recursive file search with :find
 vim.opt.wildmenu = true -- Enable a more interactive completion menu
+
+
+-- Spllit screen
+vim.keymap.set("n", "<leader>s", ":vsp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>h", ":sp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>c", ":close<CR>", { noremap = true, silent = true })
