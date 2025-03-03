@@ -12,7 +12,9 @@ return {
     local dap_virtual_text = require("nvim-dap-virtual-text")
 
     -- Setup virtual text
-    dap_virtual_text.setup()
+    dap_virtual_text.setup({
+      opts = {virt_text_pos = 'eol'}
+    })
 
     -- Setup Node adapter
     dap.adapters["pwa-node"] = {
@@ -100,11 +102,6 @@ return {
     require("dap-go").setup()
   end,
 }
-
-
-
-
-
 
 
 
