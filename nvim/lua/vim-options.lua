@@ -1,6 +1,15 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ""
 
+
+-- files
+vim.api.nvim_set_keymap("n", "QQ", ":q!<enter>", {noremap=false})
+vim.api.nvim_set_keymap("n", "WW", ":w!<enter>", {noremap=false})
+vim.api.nvim_set_keymap("n", "E", "$", {noremap=false})
+vim.api.nvim_set_keymap("n", "B", "^", {noremap=false})
+vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", {noremap=true})
+--
+--
 -- split windows
 vim.api.nvim_set_keymap("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true }) -- Split vertically
 vim.api.nvim_set_keymap("n", "<leader>sh", ":split<CR>", { noremap = true, silent = true })  -- Split horizontally
