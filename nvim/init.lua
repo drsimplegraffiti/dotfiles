@@ -25,6 +25,10 @@ require("vim-options")
 require("lazy").setup("plugins")
 
 -- Setting for Showkeys 
-vim.cmd("ShowkeysToggle")
+-- vim.cmd("ShowkeysToggle")
+
+
+
+
 
 
