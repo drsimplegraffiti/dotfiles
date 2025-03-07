@@ -13,7 +13,7 @@ source ~/.zshrc
 
 ### Copy commands
 ```bash
-cp -r ~/.config/nvim /mnt/c/Users/CAPTAIN\ ENJOY/Downloads/my-terminal-configs-tmux-vim
+cp -r ~/.config/nvim /mnt/c/users/captain\ enjoy/downloads/my-terminal-configs-tmux-vim
 ```
 
 First we want to remove old versions of Go. Run the following command in WSL Ubuntu:
